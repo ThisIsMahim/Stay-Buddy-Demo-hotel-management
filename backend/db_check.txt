@@ -1,0 +1,5 @@
+Sky View Banani | ID: 69c5c40eb86a29b812dffc82 | Active: true | Verified: true | Rooms: 1
+The Grand Palace Hotel | ID: 69c5c40eb86a29b812dffc80 | Active: true | Verified: true | Rooms: 2
+Budget Stay Mirpur | ID: 69c5c40eb86a29b812dffc81 | Active: true | Verified: true | Rooms: 2
+new hotel | ID: 69ce492f9e412737e8d0c5fc | Active: true | Verified: true | Rooms: 2
+New Hotel | ID: 69da95bccfee324dae930485 | Active: true | Verified: false | Rooms: 1

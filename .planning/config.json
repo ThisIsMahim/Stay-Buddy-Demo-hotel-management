@@ -1,0 +1,12 @@
+{
+  "preferences": {
+    "commit_frequency": "plan_complete",
+    "parallel_execution": true,
+    "verbose_logging": false
+  },
+  "design_tokens": {
+    "primary_radius": "3xl",
+    "base_color": "indigo",
+    "style_preset": "premium_minimalist"
+  }
+}
