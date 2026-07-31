@@ -1,26 +1,11 @@
 > **BrainSync Context Pumper** 🧠
-> Dynamically loaded for active file: `backend\.npmrc` (Domain: **Generic Logic**)
+> Dynamically loaded for active file: `vercel.json` (Domain: **Config/Infrastructure**)
 
-### 🔴 Generic Logic Gotchas
-- **Low cohesion detected in Domain Cluster 1**: Cluster 1 (13 nodes) has a very low cohesion score (0.08). This suggests the community is a "spaghetti" module containing unrelated logic that should be separated into cleaner domain boundaries.
-
-### 📐 Generic Logic Conventions & Fixes
-- **[discovery] 13 potentially unused files detected**: These files are not imported by any other file in the codebase and may be dead code:
-  • use-toast.ts
-  • use-advanced-memo.ts
-  • use-toast.ts
-  • useauth.ts
-  • i18n.ts
-  • utils.ts
-  • api.ts
-  • mockbackend.ts
-  • offline-sync.ts
-  • setup.ts
-  • tailwind.config.ts
-  • vite.config.ts
-  • vitest.config.ts
-
-Consider verifying if they are entry points, dynamically required, or can be safely removed.
+### 📐 Config/Infrastructure Conventions & Fixes
+- **[what-changed] 🟢 Edited vercel.json (7 changes, 13min)**: Active editing session on vercel.json.
+7 content changes over 13 minutes.
+- **[what-changed] 🟢 Edited vercel.json (5 changes, 5min)**: Active editing session on vercel.json.
+5 content changes over 5 minutes.
 - **[problem-fix] problem-fix in .gitignore**: File updated (external): .gitignore
 
 Content summary (36 lines):

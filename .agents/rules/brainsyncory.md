@@ -1,7 +1,7 @@
 
 
 # Project Memory — Stay-Buddy-Demo-hotel-management
-> 34 notes | Score threshold: >40
+> 40 notes | Score threshold: >40
 
 ## Safety — Never Run Destructive Commands
 
@@ -21,6 +21,12 @@
 ## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Important Warnings
 
 - **Low cohesion detected in Domain Cluster 1** — Cluster 1 (13 nodes) has a very low cohesion score (0.08). This sugges
+
+## Active: `.`
+
+- **problem-fix in .gitignore**
+- **🟢 Edited vercel.json (7 changes, 13min)**
+- **🟢 Edited vercel.json (5 changes, 5min)**
 
 ## Project Standards
 
