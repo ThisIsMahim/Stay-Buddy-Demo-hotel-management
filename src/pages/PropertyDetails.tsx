@@ -45,8 +45,15 @@ const PropertyDetails = () => {
     useEffect(() => {
         if (!id) return;
         window.scrollTo(0, 0);
+
+        // Maximum safety safeguard: never stay loading for more than 700ms
+        const safetyTimer = setTimeout(() => {
+            setLoading(false);
+        }, 700);
+
         api.getHotelById(id).then(async data => {
             setHotel(data);
+            setLoading(false); // Open page immediately once hotel data is ready!
             if (data) {
                 // Fetch city coordinates and calculate distance
                 if (data.locationLat && data.locationLng) {

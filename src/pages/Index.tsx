@@ -28,6 +28,12 @@ const Index = () => {
 
     useEffect(() => {
         let alive = true;
+
+        // Lightning-fast hosting safeguard: never block homepage for more than 900ms
+        const maxLoaderTimer = setTimeout(() => {
+            if (alive) setLoading(false);
+        }, 900);
+
         const loadData = () => {
             Promise.all([api.getAllHotels(), api.getAllRooms()])
                 .then(([h, r]) => {
@@ -36,10 +42,17 @@ const Index = () => {
                         setRooms(r);
                         setLoading(false);
                     }
+                })
+                .catch(() => {
+                    if (alive) setLoading(false);
                 });
         };
         loadData();
-        return () => { alive = false; };
+
+        return () => { 
+            alive = false; 
+            clearTimeout(maxLoaderTimer);
+        };
     }, []);
 
     if (loading) return <StayBuddyLoader />;

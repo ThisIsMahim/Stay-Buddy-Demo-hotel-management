@@ -55,7 +55,7 @@ export const StayBuddyLoader: React.FC<StayBuddyLoaderProps> = ({
   const [progress, setProgress] = useState(0);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
-  // Smooth realistic progress counter (0 -> 100)
+  // Ultra-fast responsive progress counter (0 -> 100 in ~300ms)
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => {
@@ -63,19 +63,19 @@ export const StayBuddyLoader: React.FC<StayBuddyLoaderProps> = ({
           clearInterval(timer);
           return 100;
         }
-        const diff = Math.floor(Math.random() * 8) + 4;
+        const diff = Math.floor(Math.random() * 12) + 12;
         return Math.min(prev + diff, 100);
       });
-    }, 120);
+    }, 25);
 
     return () => clearInterval(timer);
   }, []);
 
-  // Step switching sync with progress
+  // Fast step switching sync with progress
   useEffect(() => {
-    if (progress < 30) setCurrentStepIndex(0);
-    else if (progress < 60) setCurrentStepIndex(1);
-    else if (progress < 85) setCurrentStepIndex(2);
+    if (progress < 25) setCurrentStepIndex(0);
+    else if (progress < 55) setCurrentStepIndex(1);
+    else if (progress < 80) setCurrentStepIndex(2);
     else setCurrentStepIndex(3);
   }, [progress]);
 
