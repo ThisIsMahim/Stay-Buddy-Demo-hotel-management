@@ -19,6 +19,8 @@ import ReportModal from "@/components/ReportModal";
 import { useSearch } from "@/context/SearchContext";
 import SearchBar from "@/components/SearchBar";
 
+import StayBuddyLoader from "@/components/StayBuddyLoader";
+
 const PropertyDetails = () => {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -123,12 +125,7 @@ const PropertyDetails = () => {
         }
     };
 
-    if (loading) return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50">
-            <Loader2 className="w-12 h-12 animate-spin text-blue-600" />
-            <p className="mt-4 text-slate-500 font-medium tracking-wide">Fetching property details...</p>
-        </div>
-    );
+    if (loading) return <StayBuddyLoader message="Fetching property details..." subtext="StayBuddy Hotel & Room Information" />;
 
     if (!hotel) return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-6 text-center">
