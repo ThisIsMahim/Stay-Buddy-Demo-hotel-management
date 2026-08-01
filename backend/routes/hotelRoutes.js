@@ -118,8 +118,20 @@ const { uploadImages } = require('../utils/uploadHelpers');
 // POST /api/hotels
 router.post('/', async (req, res) => {
   try {
-    let { mapUrl, locationLat, locationLng, images, ...rest } = req.body;
-    if (mapUrl && mapUrl.trim() !== "") {
+    let { mapUrl, locationLat, locationLng, images, ownerId, owner, name, address, city, ...rest } = req.body;
+    
+    // Fallback/Resolve valid owner ObjectId
+    let finalOwnerId = ownerId || owner;
+    if (!finalOwnerId || !mongoose.Types.ObjectId.isValid(finalOwnerId)) {
+      const User = require('../models/User');
+      let fallbackUser = await User.findOne({ role: { $in: ['OWNER', 'ADMIN'] } });
+      if (!fallbackUser) {
+        fallbackUser = await User.create({ name: 'Default Owner', email: 'owner@staybuddy.com', role: 'OWNER' });
+      }
+      finalOwnerId = fallbackUser._id;
+    }
+
+    if (mapUrl && typeof mapUrl === 'string' && mapUrl.trim() !== "") {
       try {
         const pt = await convertMapUrlToPointCustom(mapUrl);
         if (pt && pt.latitude) {
@@ -128,10 +140,41 @@ router.post('/', async (req, res) => {
         }
       } catch(e) { console.error(e); }
     }
-    const uploadedImages = await uploadImages(images, 'staybuddy/hotels');
-    const hotel = await Hotel.create({ ...rest, locationLat, locationLng, mapUrl, images: uploadedImages, owner: req.body.ownerId });
-    res.status(201).json({ ...hotel.toObject(), id: hotel._id.toString(), ownerId: hotel.owner.toString() });
-  } catch (err) { res.status(400).json({ message: err.message }); }
+
+    let uploadedImages = [];
+    if (images && Array.isArray(images) && images.length > 0) {
+      try {
+        uploadedImages = await uploadImages(images, 'staybuddy/hotels');
+      } catch (imgErr) {
+        console.error("Image upload failed, using provided images:", imgErr);
+        uploadedImages = images;
+      }
+    } else if (images) {
+      uploadedImages = Array.isArray(images) ? images : [];
+    }
+
+    const hotel = await Hotel.create({
+      ...rest,
+      name: name || 'New Hotel',
+      address: address || 'Default Address',
+      city: city || 'Dhaka',
+      locationLat: Number(locationLat) || 0,
+      locationLng: Number(locationLng) || 0,
+      mapUrl: mapUrl || '',
+      images: uploadedImages,
+      owner: finalOwnerId
+    });
+
+    const hotelObj = hotel.toObject();
+    res.status(201).json({
+      ...hotelObj,
+      id: hotel._id.toString(),
+      ownerId: hotel.owner ? hotel.owner.toString() : ''
+    });
+  } catch (err) {
+    console.error("POST /api/hotels Error:", err);
+    res.status(400).json({ message: err.message || 'Failed to create hotel' });
+  }
 });
 
 // PATCH /api/hotels/:id

@@ -6,9 +6,8 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 
 export default function OwnerLogin() {
-    // DEV REMINDER: Remove these defaults in production!
-    const [email, setEmail] = useState('owner@staybuddy.com');
-    const [password, setPassword] = useState('password123');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { toast } = useToast();
@@ -39,26 +38,38 @@ export default function OwnerLogin() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <Card className="w-[400px]">
-                <CardHeader>
-                    <CardTitle className="text-2xl text-center">Owner Login</CardTitle>
-                    <p className="text-sm text-red-500 text-center font-medium mt-2 bg-red-50 p-2 rounded">
-                        DEV: Use 'owner@staybuddy.com' / 'password123' <br />
-                        (Remove strictly before production!)
-                    </p>
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+            <Card className="w-full max-w-[400px] shadow-lg border-border">
+                <CardHeader className="space-y-3 text-center pb-4">
+                    <div className="mx-auto w-16 h-16 rounded-full overflow-hidden shadow-sm flex items-center justify-center bg-muted">
+                        <img src="/Logo.png" alt="RESERVATION BD" className="w-full h-full object-contain" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold tracking-tight">Owner Login</CardTitle>
+                    <p className="text-xs text-muted-foreground">Manage your hotel bookings and properties</p>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleLogin} className="space-y-4">
                         <div className="space-y-2">
-                            <label>Email</label>
-                            <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="owner@staybuddy.com" required />
+                            <label className="text-sm font-medium text-foreground">Email</label>
+                            <Input 
+                                type="email" 
+                                value={email} 
+                                onChange={(e) => setEmail(e.target.value)} 
+                                placeholder="Enter your email" 
+                                required 
+                            />
                         </div>
                         <div className="space-y-2">
-                            <label>Password</label>
-                            <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password123" required />
+                            <label className="text-sm font-medium text-foreground">Password</label>
+                            <Input 
+                                type="password" 
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)} 
+                                placeholder="Enter your password" 
+                                required 
+                            />
                         </div>
-                        <Button type="submit" className="w-full" disabled={loading}>
+                        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2" disabled={loading}>
                             {loading ? 'Logging in...' : 'Login'}
                         </Button>
                     </form>
