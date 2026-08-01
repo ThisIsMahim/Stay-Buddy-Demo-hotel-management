@@ -9,16 +9,16 @@ import {
 import { 
   Sparkles, Star, MapPin, Award, Zap, ShieldCheck, 
   ChevronRight, Heart, Users, CheckCircle2, TrendingUp, 
-  Sun, Compass, Building2, Flame, ArrowUpRight, Play, Eye
+  Sun, Compass, Building2, Flame, ArrowUpRight, Play
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-// High-resolution luxury resort & hotel assets
-import hero1 from "../assets/pexels-aj-ahamad-767001191-30554296.jpg";
-import hero2 from "../assets/pexels-pixabay-164595.jpg";
-import hero3 from "../assets/pexels-quang-nguyen-vinh-222549-14021931.jpg";
-import hero4 from "../assets/pexels-vince-28962384.jpg";
+// 4 Handpicked, Breathtaking Outdoor Luxury Resort, Infinity Pool & Sky Villa Assets
+import resortLuxe1 from "../assets/pexels-didi-lecatompessy-2149441489-33125906.jpg";
+import resortLuxe2 from "../assets/pexels-quang-nguyen-vinh-222549-29000012.jpg";
+import resortLuxe3 from "../assets/pexels-pixabay-164595.jpg";
+import resortLuxe4 from "../assets/pexels-cheng-shi-song-427082720-35022072.jpg";
 
 interface SlideData {
   id: string;
@@ -39,63 +39,63 @@ interface SlideData {
 const SLIDES: SlideData[] = [
   {
     id: "stay",
-    image: hero1,
+    image: resortLuxe1,
     titleHighlight: "Stay",
     titleHighlightBn: "আবাসন",
-    tagline: "Luxury Bedrooms & Architectural Suites",
-    taglineBn: "প্রিমিয়াম বেডরুম ও স্থাপত্যশৈলী সমৃদ্ধ সুইট",
-    location: "Dhaka • Cox's Bazar • Sylhet",
-    locationBn: "ঢাকা • কক্সবাজার • সিলেট",
+    tagline: "Ultra-Luxury Ocean Villa & Sanctuary Pool",
+    taglineBn: "প্রাইভেট পুল ও সমুদ্র উপকূলীয় বিলাসবহুল ভিলা",
+    location: "Cox's Bazar Beachfront Sanctuary",
+    locationBn: "কক্সবাজার সমুদ্র সৈকত স্যাংচুয়ারি",
     label: "01 STAY",
     labelBn: "০১ আবাসন",
-    rating: "4.98 (1,420+ reviews)",
-    priceTag: "From $120 / night",
-    priceTagBn: "৳১২,০০০ / রাত থেকে",
-  },
-  {
-    id: "resort",
-    image: hero2,
-    titleHighlight: "Resort",
-    titleHighlightBn: "রিসোর্ট",
-    tagline: "Oceanfront 5-Star Infinity Sanctuaries",
-    taglineBn: "সমুদ্রপাড়ের ৫-তারকা ইনফিনিটি রিসোর্ট",
-    location: "Cox's Bazar Beachfront",
-    locationBn: "কক্সবাজার সমুদ্র সৈকত",
-    label: "02 RESORT",
-    labelBn: "০২ রিসোর্ট",
-    rating: "4.99 (2,100+ reviews)",
+    rating: "4.99 (2,450+ reviews)",
     priceTag: "From $180 / night",
     priceTagBn: "৳১৮,০০০ / রাত থেকে",
   },
   {
+    id: "resort",
+    image: resortLuxe2,
+    titleHighlight: "Resort",
+    titleHighlightBn: "রিসোর্ট",
+    tagline: "5-Star Infinity Pool & Tropical Palm Retreat",
+    taglineBn: "৫-তারকা ইনফিনিটি পুল ও ট্রপিক্যাল রিসোর্ট",
+    location: "Inani Beach & Sylhet Hills",
+    locationBn: "ইনানী সৈকত ও সিলেট হিলস",
+    label: "02 RESORT",
+    labelBn: "০২ রিসোর্ট",
+    rating: "4.98 (1,890+ reviews)",
+    priceTag: "From $220 / night",
+    priceTagBn: "৳২২,০০০ / রাত থেকে",
+  },
+  {
     id: "villa",
-    image: hero3,
+    image: resortLuxe3,
     titleHighlight: "Villa",
     titleHighlightBn: "ভিলা",
-    tagline: "Private Pool & Sylhet Tea Garden Retreats",
-    taglineBn: "প্রাইভেট পুল ও চা বাগান ঘেরা ভিলা",
-    location: "Sreemangal & Sylhet Hills",
-    locationBn: "শ্রীমঙ্গল ও সিলেট হিলস",
+    tagline: "Private Ocean Villa & Tropical Garden Sanctuary",
+    taglineBn: "সমুদ্র উপকূলীয় প্রাইভেট ভিলা ও গার্ডেন রিসোর্ট",
+    location: "Saint Martin Island & Cox's Bazar",
+    locationBn: "সেন্ট মার্টিন আইল্যান্ড ও কক্সবাজার",
     label: "03 VILLA",
     labelBn: "০৩ ভিলা",
-    rating: "4.97 (890+ reviews)",
+    rating: "4.97 (1,540+ reviews)",
     priceTag: "From $250 / night",
     priceTagBn: "৳২৫,০০০ / রাত থেকে",
   },
   {
     id: "paradise",
-    image: hero4,
+    image: resortLuxe4,
     titleHighlight: "Paradise",
     titleHighlightBn: "প্যারাডাইস",
-    tagline: "Curated Architectural Wonders in the Clouds",
-    taglineBn: "মেঘের দেশে মেঘছোঁয়া স্থাপত্য বিস্ময়",
-    location: "Sajek Valley & Chattogram",
-    locationBn: "সাজেক ভ্যালি ও চট্টগ্রাম",
+    tagline: "Cloud-Touching Luxury Sky Villas & Resort",
+    taglineBn: "মেঘছোঁয়া স্কাই ভিলা ও মাউন্টেন প্যারাডাইস",
+    location: "Sajek Valley & Chattogram Hills",
+    locationBn: "সাজেক ভ্যালি ও চট্টগ্রাম হিলস",
     label: "04 PARADISE",
     labelBn: "০৪ প্যারাডাইস",
-    rating: "5.00 (640+ reviews)",
-    priceTag: "From $210 / night",
-    priceTagBn: "৳২১,০০০ / রাত থেকে",
+    rating: "5.00 (980+ reviews)",
+    priceTag: "From $290 / night",
+    priceTagBn: "৳২৯,০০০ / রাত থেকে",
   },
 ];
 
@@ -111,21 +111,21 @@ export const HeroSection: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [liveBookingsCount, setLiveBookingsCount] = useState(164);
+  const [liveBookingsCount, setLiveBookingsCount] = useState(199);
   const sectionRef = useRef<HTMLElement>(null);
 
   // 3D Parallax Mouse Tracking with Framer Motion Springs
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 150 };
+  const springConfig = { damping: 25, stiffness: 140 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const ambientX = useTransform(smoothX, [-0.5, 0.5], [-25, 25]);
-  const ambientY = useTransform(smoothY, [-0.5, 0.5], [-20, 20]);
-  const cardTiltX = useTransform(smoothY, [-0.5, 0.5], [6, -6]);
-  const cardTiltY = useTransform(smoothX, [-0.5, 0.5], [-8, 8]);
+  const ambientX = useTransform(smoothX, [-0.5, 0.5], [-20, 20]);
+  const ambientY = useTransform(smoothY, [-0.5, 0.5], [-15, 15]);
+  const cardTiltX = useTransform(smoothY, [-0.5, 0.5], [5, -5]);
+  const cardTiltY = useTransform(smoothX, [-0.5, 0.5], [-6, 6]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!sectionRef.current) return;
@@ -141,19 +141,19 @@ export const HeroSection: React.FC = () => {
     mouseY.set(0);
   };
 
-  // Continuous 4-Second Aesthetic Cinematic Slide Progression
+  // Continuous 5-Second Aesthetic Cinematic Slide Progression (Silky Smooth)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   // Simulated live booking updates
   useEffect(() => {
     const counterInterval = setInterval(() => {
-      setLiveBookingsCount((prev) => prev + (Math.random() > 0.7 ? 1 : 0));
-    }, 5000);
+      setLiveBookingsCount((prev) => prev + (Math.random() > 0.65 ? 1 : 0));
+    }, 4500);
     return () => clearInterval(counterInterval);
   }, []);
 
@@ -174,36 +174,41 @@ export const HeroSection: React.FC = () => {
       onMouseLeave={handleMouseLeave}
       className="relative min-h-[540px] md:min-h-[600px] lg:min-h-[660px] overflow-hidden flex flex-col justify-center select-none bg-slate-950"
     >
-      {/* ═══════════ CINEMATIC MULTI-LAYER BACKDROP CAROUSEL ═══════════ */}
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 1.12, filter: "brightness(1.3) blur(10px)" }}
-          animate={{ opacity: 1, scale: 1.03, filter: "brightness(1) blur(0px)" }}
-          exit={{ opacity: 0, scale: 0.98, filter: "brightness(0.7) blur(6px)" }}
-          transition={{ duration: 1.9, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 z-0"
-        >
-          <img
-            src={slide.image}
-            alt="StayBuddy Luxury Stay Sanctuary"
-            className="w-full h-full object-cover object-center"
-          />
-          {/* Aesthetic Luxury Dual-Tone Emerald & Velvet Black Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#031B18]/95 via-[#0A3832]/85 to-[#041E1C]/80" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#062622] via-transparent to-black/50" />
-        </motion.div>
-      </AnimatePresence>
+      {/* ═══════════ CINEMATIC PRELOADED CROSSFADE CAROUSEL (ZERO FLICKER, FILM-STYLE TRANSITION) ═══════════ */}
+      <div className="absolute inset-0 z-0">
+        {SLIDES.map((s, idx) => {
+          const isActive = idx === currentSlide;
+          return (
+            <div
+              key={s.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+              }`}
+            >
+              <img
+                src={s.image}
+                alt={s.tagline}
+                className={`w-full h-full object-cover object-center brightness-105 contrast-105 transform transition-transform duration-[6000ms] ease-out ${
+                  isActive ? "scale-105" : "scale-100"
+                }`}
+              />
+              {/* Aesthetic High-Contrast Dark Vignette Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/45 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-black/35" />
+            </div>
+          );
+        })}
+      </div>
 
       {/* ═══════════ INTERACTIVE MOUSE-PARALLAX AMBIENT LIGHT LEAKS ═══════════ */}
       <motion.div
         style={{ x: ambientX, y: ambientY }}
         className="absolute inset-0 z-10 pointer-events-none overflow-hidden"
       >
-        {/* Champagne Gold Aura Orb */}
-        <div className="absolute -top-20 -left-20 w-[30rem] h-[30rem] bg-amber-400/20 rounded-full blur-[130px] animate-pulse" />
-        {/* Emerald Deep Glow Orb */}
-        <div className="absolute bottom-10 right-1/4 w-[26rem] h-[26rem] bg-emerald-400/15 rounded-full blur-[140px]" />
+        {/* Luminous Gold Aurora Orb */}
+        <div className="absolute -top-24 -left-20 w-[34rem] h-[34rem] bg-amber-400/20 rounded-full blur-[130px] animate-pulse" />
+        {/* Deep Sapphire/Emerald Glow Orb */}
+        <div className="absolute bottom-10 right-1/4 w-[28rem] h-[28rem] bg-emerald-400/15 rounded-full blur-[140px]" />
 
         {/* Shimmering Aesthetic Gold Sparkle Dust */}
         {[...Array(12)].map((_, i) => (
@@ -211,24 +216,24 @@ export const HeroSection: React.FC = () => {
             key={i}
             initial={{
               opacity: 0,
-              y: 100,
+              y: 90,
               x: (i - 6) * 75 + (Math.random() * 50 - 25),
               scale: 0.4,
             }}
             animate={{
-              opacity: [0, 0.9, 0],
-              y: [-10, -250],
-              scale: [0.4, 1.2, 0.3],
+              opacity: [0, 0.95, 0],
+              y: [-15, -240],
+              scale: [0.4, 1.25, 0.3],
             }}
             transition={{
               duration: 4.5 + (i % 4),
               repeat: Infinity,
-              delay: i * 0.4,
+              delay: i * 0.35,
               ease: "easeOut",
             }}
             className="absolute pointer-events-none"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-300/90 drop-shadow-[0_0_10px_rgba(245,158,11,1)]" />
+            <Sparkles className="w-3.5 h-3.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,158,11,1)]" />
           </motion.div>
         ))}
       </motion.div>
@@ -248,7 +253,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-xl px-4 py-1.5 rounded-full border border-white/20 shadow-2xl mb-6 group cursor-pointer hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+            className="inline-flex items-center gap-2.5 bg-slate-900/60 backdrop-blur-xl px-4 py-1.5 rounded-full border border-white/20 shadow-2xl mb-6 group cursor-pointer hover:bg-slate-900/80 hover:border-amber-400/50 transition-all duration-300"
           >
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
@@ -263,39 +268,39 @@ export const HeroSection: React.FC = () => {
           </motion.div>
 
           {/* World-Class Aesthetic Morphing Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.14] tracking-tight mb-6 drop-shadow-md">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.14] tracking-tight mb-6 drop-shadow-lg">
             <span>{t("Find Your Perfect")}</span>{" "}
             <br className="hidden sm:block" />
             
-            {/* Highly Aesthetic Gold Word Wrapper with Shimmer Beam */}
+            {/* Highly Aesthetic Vivid Gold Word Wrapper */}
             <span className="relative inline-block px-1 font-black">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentSlide}
-                  initial={{ opacity: 0, y: 24, scale: 0.9, rotateX: -25 }}
-                  animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
-                  exit={{ opacity: 0, y: -24, scale: 0.9, rotateX: 25 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block text-[#FFD700] drop-shadow-[0_2px_18px_rgba(255,215,0,0.7)]"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="inline-block text-[#FFD700] drop-shadow-[0_0_25px_rgba(255,215,0,0.95)]"
                 >
                   {highlightWord}
                 </motion.span>
               </AnimatePresence>
 
-              {/* Aesthetic Glowing Champagne-Gold Underline & Sparkle */}
+              {/* Aesthetic Glowing Champagne-Gold Underline */}
               <motion.span 
                 key={`underline-${currentSlide}`}
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-                className="absolute left-0 right-0 -bottom-1 h-1.5 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 rounded-full origin-left shadow-[0_0_15px_rgba(245,158,11,1)]"
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                className="absolute left-0 right-0 -bottom-1 h-1.5 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 rounded-full origin-left shadow-[0_0_18px_rgba(245,158,11,1)]"
               />
             </span>{" "}
             <span>{t("in Bangladesh")}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-white/85 text-sm md:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed mb-8 drop-shadow-sm">
+          <p className="text-white/90 text-sm md:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed mb-8 drop-shadow-md">
             {t("Discover handpicked hotels, resorts, and homes with exclusive discounts. Book your dream stay today.")}
           </p>
 
@@ -311,7 +316,7 @@ export const HeroSection: React.FC = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => handleQuickSearch(pill.query)}
-                className="group relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 hover:border-amber-400/50 backdrop-blur-md text-xs font-medium text-white transition-all duration-300 shadow-md"
+                className="group relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/60 hover:bg-slate-900/90 border border-white/20 hover:border-amber-400/60 backdrop-blur-md text-xs font-medium text-white transition-all duration-300 shadow-md"
               >
                 <span>{pill.label}</span>
                 <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-300 border border-amber-400/30">
@@ -331,7 +336,7 @@ export const HeroSection: React.FC = () => {
           className="w-full max-w-md"
         >
           {/* Aesthetic Luxury Glass Spotlight Card */}
-          <div className="relative bg-gradient-to-br from-white/15 via-white/10 to-white/5 backdrop-blur-2xl border border-white/20 p-5 md:p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden">
+          <div className="relative bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/70 backdrop-blur-2xl border border-white/25 p-5 md:p-6 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] overflow-hidden">
             
             {/* Card Ambient Glow Header */}
             <div className="flex items-center justify-between pb-4 border-b border-white/15 mb-4">
@@ -350,7 +355,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Live Social Proof Avatar Group & Counter */}
-            <div className="flex items-center gap-3.5 bg-slate-950/40 border border-white/10 p-3 rounded-2xl mb-4">
+            <div className="flex items-center gap-3.5 bg-slate-950/60 border border-white/15 p-3 rounded-2xl mb-4">
               <div className="flex -space-x-2.5">
                 <img
                   src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
@@ -379,44 +384,51 @@ export const HeroSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Active Sanctuary Details Preview */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.35 }}
-                className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-4 text-left"
-              >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-bold text-amber-300 flex items-center gap-1">
-                    <Star className="w-3.5 h-3.5 fill-amber-300" />
-                    {slide.rating}
-                  </span>
-                  <span className="text-[11px] font-bold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
-                    <ShieldCheck className="w-3.5 h-3.5" />
-                    {t("100% Verified")}
-                  </span>
-                </div>
-                <h3 className="text-sm md:text-base font-extrabold text-white leading-snug">
-                  {isBengali ? slide.taglineBn : slide.tagline}
-                </h3>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10 text-xs">
-                  <span className="text-white/80 flex items-center gap-1 font-medium">
-                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                    {isBengali ? slide.locationBn : slide.location}
-                  </span>
-                  <span className="font-bold text-amber-300">
+            {/* ALWAYS-RENDERED AESTHETIC SANCTUARY SHOWCASE (ZERO BLANK HOLE BUG) */}
+            <div className="bg-white/10 border border-white/20 rounded-2xl p-4 mb-4 text-left shadow-lg backdrop-blur-md transition-all duration-500">
+              <div className="flex items-center gap-3.5 mb-3">
+                <img
+                  src={slide.image}
+                  alt="Sanctuary Thumbnail"
+                  className="w-16 h-16 rounded-xl object-cover border-2 border-amber-400/80 shadow-md shrink-0"
+                />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs font-bold text-amber-300 flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 fill-amber-300" />
+                      {slide.rating}
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3" />
+                      {t("100% Verified")}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-extrabold text-white leading-snug truncate">
+                    {isBengali ? slide.taglineBn : slide.tagline}
+                  </h3>
+                  <p className="text-xs text-amber-300/90 font-semibold mt-0.5">
                     {isBengali ? slide.priceTagBn : slide.priceTag}
-                  </span>
+                  </p>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
 
-            {/* AWWWARDS-LEVEL AESTHETIC APPLE-STYLE SEGMENTED SLIDE SWITCHER */}
-            <div className="w-full bg-slate-950/60 backdrop-blur-xl border border-white/20 p-2 rounded-2xl">
-              <div className="flex items-center justify-between gap-1.5 relative">
+              <div className="flex items-center justify-between pt-2.5 border-t border-white/15 text-xs">
+                <span className="text-white/90 flex items-center gap-1.5 font-medium truncate">
+                  <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  {isBengali ? slide.locationBn : slide.location}
+                </span>
+                <button
+                  onClick={() => handleQuickSearch(slide.titleHighlight)}
+                  className="text-[11px] font-extrabold bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950 px-3 py-1 rounded-full uppercase shadow hover:scale-105 transition-all shrink-0"
+                >
+                  {t("Explore →")}
+                </button>
+              </div>
+            </div>
+
+            {/* AWWWARDS-LEVEL AESTHETIC SEGMENTED SLIDE SWITCHER */}
+            <div className="w-full bg-slate-950/80 backdrop-blur-xl border border-white/20 p-2 rounded-2xl">
+              <div className="flex items-center justify-between gap-1.5">
                 {SLIDES.map((s, idx) => {
                   const isActive = idx === currentSlide;
                   return (
@@ -424,22 +436,13 @@ export const HeroSection: React.FC = () => {
                       key={idx}
                       onClick={() => setCurrentSlide(idx)}
                       aria-label={`Switch to slide ${idx + 1}`}
-                      className="relative flex-1 py-2 px-1.5 rounded-xl text-center transition-all duration-300 z-10"
+                      className={`relative flex-1 py-2 px-1 rounded-xl text-center transition-all duration-300 overflow-hidden ${
+                        isActive
+                          ? "bg-gradient-to-r from-amber-500/30 via-yellow-500/20 to-amber-500/30 border border-amber-400/60 shadow-[0_0_15px_rgba(245,158,11,0.35)] text-amber-300 font-extrabold"
+                          : "hover:bg-white/10 text-white/70 hover:text-white font-bold"
+                      }`}
                     >
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeSlideSegment"
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 30,
-                          }}
-                          className="absolute inset-0 bg-white/20 border border-white/30 rounded-xl shadow-lg -z-10"
-                        />
-                      )}
-                      <div className={`text-[10px] md:text-xs font-bold uppercase tracking-wider ${
-                        isActive ? "text-amber-300 drop-shadow" : "text-white/70 hover:text-white"
-                      }`}>
+                      <div className="text-[10px] md:text-xs uppercase tracking-wider">
                         {isBengali ? s.labelBn : s.label}
                       </div>
 
@@ -449,7 +452,7 @@ export const HeroSection: React.FC = () => {
                           key={`timer-${currentSlide}`}
                           initial={{ width: "0%" }}
                           animate={{ width: "100%" }}
-                          transition={{ duration: 4.0, ease: "linear" }}
+                          transition={{ duration: 5.0, ease: "linear" }}
                           className="absolute bottom-0 left-0 h-[2.5px] bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 rounded-full shadow-[0_0_10px_#f59e0b]"
                         />
                       )}
