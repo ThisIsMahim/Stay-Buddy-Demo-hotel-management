@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 import {
   Shield, Users, Building2, AlertTriangle,
-  Bell, BookOpen, BarChart3, Star
+  Bell, BookOpen, BarChart3, Star, Compass
 } from "lucide-react";
 import { api, UserProfile, HotelOwner, Hotel, Booking, Notification, Room, ExperienceCard, Complaint } from "../services/api";
 
@@ -22,8 +22,9 @@ import BookingsPanel from "./admin/panels/BookingsPanel";
 import ComplaintsPanel from "./admin/panels/ComplaintsPanel";
 import ExperienceManagementPanel from "./admin/panels/ExperienceManagementPanel";
 import NotificationsPanel from "./admin/panels/NotificationsPanel";
+import TouristSpotsPanel from "./admin/panels/TouristSpotsPanel";
 
-type Tab = "stats" | "users" | "hotels" | "bookings" | "complaints" | "notifications" | "experiences";
+type Tab = "stats" | "users" | "hotels" | "bookings" | "complaints" | "notifications" | "experiences" | "spots";
 
 export default function AdminDashboard() {
   const [currentUser, setCurrentUser] = useState<UserProfile | HotelOwner | null>(null);
@@ -64,7 +65,16 @@ export default function AdminDashboard() {
     api.getAllHotels().then(d => setHotels(Array.isArray(d) ? d : []));
     api.getAllRooms().then(d => setRooms(Array.isArray(d) ? d : []));
     api.getAdminComplaints().then(d => setComplaints(Array.isArray(d) ? d : []));
-    api.getAllBookings().then(d => setBookings(Array.isArray(d) ? d : []));
+    api.getAllBookings().then(d => {
+      const serverBookings = Array.isArray(d) ? d : [];
+      try {
+        const local = JSON.parse(localStorage.getItem('sb_bookings') || '[]');
+        const combined = [...serverBookings, ...local.filter((l: any) => !serverBookings.some(s => s.id === l.id))];
+        setBookings(combined);
+      } catch {
+        setBookings(serverBookings);
+      }
+    });
     if (currentUser) api.getNotifications(currentUser.id).then(d => setNotifications(Array.isArray(d) ? d : []));
     api.getExperiences().then(d => setExperiences(Array.isArray(d) ? d : []));
   }, [refresh, currentUser]);
@@ -92,6 +102,7 @@ export default function AdminDashboard() {
     { id: "bookings", label: "Bookings", icon: <BookOpen className="w-5 h-5" /> },
     { id: "complaints", label: "Complaints", icon: <AlertTriangle className="w-5 h-5" />, badge: (Array.isArray(complaints) ? complaints : []).filter(c => c.status !== "Resolved").length },
     { id: "experiences", label: "Experiences", icon: <Star className="w-5 h-5" /> },
+    { id: "spots", label: "Tourist Spots", icon: <Compass className="w-5 h-5" /> },
     { id: "notifications", label: "Notifications", icon: <Bell className="w-5 h-5" />, badge: unreadNotif },
   ];
 
@@ -157,6 +168,8 @@ export default function AdminDashboard() {
             reload={reload}
           />
         )}
+
+        {tab === "spots" && <TouristSpotsPanel />}
 
         {tab === "notifications" && (
           <NotificationsPanel

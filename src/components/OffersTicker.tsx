@@ -61,10 +61,12 @@ export default function OffersTicker() {
   if (items.length === 0) return null;
 
   return (
-    <div className="w-full overflow-hidden rounded-2xl border border-primary/15 bg-gradient-to-r from-coral/light to-white/80 backdrop-blur px-4 py-3 shadow-sm">
+    <div className="w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 backdrop-blur-md px-4 py-3 shadow-md">
       <style>{`@keyframes sb-marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }`}</style>
       <div className="flex items-center gap-3">
-        <div className="text-[10px] font-black uppercase tracking-[0.25em] text-primary shrink-0">Offers</div>
+        <div className="text-[10px] font-extrabold uppercase tracking-[0.2em] bg-gradient-to-r from-amber-500 to-rose-500 text-white px-3 py-1 rounded-full shadow-sm shrink-0">
+          🔥 Offers
+        </div>
         <div className="relative flex-1 overflow-hidden">
           <div
             className="flex w-max gap-6 whitespace-nowrap"
@@ -73,17 +75,17 @@ export default function OffersTicker() {
             {items.map((it, idx) => (
               <div
                 key={`${idx}-${it.id}`}
-                className="text-xs font-bold text-slate-900 px-4 py-2 rounded-full bg-white/80 border border-primary/15 flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow"
+                className="text-xs font-bold text-slate-800 px-3.5 py-1.5 rounded-full bg-slate-50 hover:bg-amber-50 border border-slate-200/60 flex items-center gap-2.5 shadow-xs hover:border-amber-400/50 transition-all cursor-pointer"
               >
                 {it.imageUrl ? (
                   <img
                     src={it.imageUrl}
                     alt="Offer"
-                    className="w-6 h-6 rounded-full object-cover border border-white ring-2 ring-primary/20"
+                    className="w-5 h-5 rounded-full object-cover border border-white ring-1 ring-amber-400/40"
                     loading="lazy"
                   />
                 ) : null}
-                <span className="text-primary">{it.title}</span>
+                <span className="text-slate-900 font-semibold">{it.title}</span>
               </div>
             ))}
           </div>

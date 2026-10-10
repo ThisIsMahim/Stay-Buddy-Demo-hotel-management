@@ -7,16 +7,19 @@ const { convertMapUrlToPointCustom } = require('../utils/mapHelpers');
 // GET /api/hotels — search hotels (public)
 router.get('/', async (req, res) => {
   try {
-    const { q, city, showRedMarked, checkIn, checkOut, adults, children, roomsCount } = req.query;
+    const { q, destination, city, showRedMarked, checkIn, checkOut, adults, children, roomsCount } = req.query;
     const filter = {};
     if (!showRedMarked || showRedMarked === 'false') filter.isRedMarked = false;
+    
+    const searchTerm = (q || destination || '').trim();
     if (city) filter.city = new RegExp(city, 'i');
-    if (q) {
+    if (searchTerm) {
+      const cleanTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       filter.$or = [
-        { name: new RegExp(q, 'i') },
-        { city: new RegExp(q, 'i') },
-        { address: new RegExp(q, 'i') },
-        { description: new RegExp(q, 'i') },
+        { name: new RegExp(cleanTerm, 'i') },
+        { city: new RegExp(cleanTerm, 'i') },
+        { address: new RegExp(cleanTerm, 'i') },
+        { description: new RegExp(cleanTerm, 'i') },
       ];
     }
     const hotels = await Hotel.find(filter).sort({ updatedAt: -1 }).lean();

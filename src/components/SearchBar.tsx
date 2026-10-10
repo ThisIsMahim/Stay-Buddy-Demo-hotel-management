@@ -140,7 +140,7 @@ const SearchBar = ({ className = "" }: SearchBarProps) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white/95 backdrop-blur-md p-1.5 flex flex-col lg:flex-row shadow-lg border border-slate-200/80 rounded-[2rem] lg:rounded-full relative group/bar gap-1"
+        className="bg-white/95 backdrop-blur-xl p-1.5 flex flex-col lg:flex-row shadow-[0_20px_50px_rgba(15,23,42,0.18)] border border-slate-200/80 rounded-[2rem] lg:rounded-full relative group/bar gap-1"
       >
         {/* Location Input Group */}
         <div className="flex-[1.8] flex items-center px-4 py-2.5 gap-3 rounded-full relative hover:bg-slate-50 transition-colors cursor-text group/loc" onClick={() => setSearchFocused(true)}>

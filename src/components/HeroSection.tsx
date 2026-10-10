@@ -248,24 +248,38 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl text-center lg:text-left"
         >
-          {/* Aesthetic Luxury Flash Sale Badge */}
-          <motion.div 
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 bg-slate-900/60 backdrop-blur-xl px-4 py-1.5 rounded-full border border-white/20 shadow-2xl mb-6 group cursor-pointer hover:bg-slate-900/80 hover:border-amber-400/50 transition-all duration-300"
-          >
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400 shadow-[0_0_8px_#f59e0b]" />
-            </span>
-            <span className="text-[11px] md:text-xs font-bold text-white uppercase tracking-widest">
-              {t("FLASH SALE: UP TO 50% OFF")}
-            </span>
-            <span className="text-[10px] font-extrabold bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950 px-2.5 py-0.5 rounded-full uppercase shadow-sm">
-              {t("Limited Time")}
-            </span>
-          </motion.div>
+          {/* National Initiative & Flash Sale Badges */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-6">
+            <motion.div 
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              onClick={() => navigate("/national-initiative")}
+              className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-xl px-4 py-1.5 rounded-full border border-emerald-500/40 shadow-2xl group cursor-pointer hover:bg-slate-900 hover:border-emerald-400 transition-all duration-300"
+            >
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_#10b981]" />
+              </span>
+              <span className="text-[11px] md:text-xs font-bold text-emerald-300 uppercase tracking-widest">
+                {isBengali ? "জাতীয় প্ল্যাটফর্ম • স্মার্ট বাংলাদেশ ২০৪১" : "National Platform • Smart BD 2041"}
+              </span>
+              <span className="text-[10px] font-extrabold bg-gradient-to-r from-emerald-400 to-teal-300 text-slate-950 px-2.5 py-0.5 rounded-full uppercase shadow-sm">
+                {isBengali ? "সরকারি উদ্যোগ" : "Govt Initiative"}
+              </span>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 bg-slate-900/60 backdrop-blur-xl px-3.5 py-1.5 rounded-full border border-white/20 shadow-2xl group cursor-pointer hover:bg-slate-900/80 hover:border-amber-400/50 transition-all duration-300"
+            >
+              <span className="text-[11px] md:text-xs font-bold text-white uppercase tracking-widest">
+                {t("FLASH SALE: UP TO 50% OFF")}
+              </span>
+            </motion.div>
+          </div>
 
           {/* World-Class Aesthetic Morphing Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.14] tracking-tight mb-6 drop-shadow-lg">
@@ -301,7 +315,9 @@ export const HeroSection: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-white/90 text-sm md:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed mb-8 drop-shadow-md">
-            {t("Discover handpicked hotels, resorts, and homes with exclusive discounts. Book your dream stay today.")}
+            {isBengali 
+              ? "StayBD — সহজ অনুসন্ধান। নিরাপদ আবাসন। দেশের ৬৪ জেলার যাচাইকৃত হোটেল, রিসোর্ট ও কটেজে মধ্যস্বত্বভোগী ছাড়া সরাসরি বুকিং।" 
+              : "StayBD — Stay Smart. Book Easy. Discover handpicked, verified hotels, resorts, and eco-lodges across 64 districts with zero hidden fees."}
           </p>
 
           {/* ═══════════ INTERACTIVE QUICK-INSPIRATION PILLS ═══════════ */}
@@ -467,8 +483,8 @@ export const HeroSection: React.FC = () => {
 
       </div>
 
-      {/* Subtle Bottom Glow Transition Curve */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+      {/* Sleek Dark Vignette Edge for crisp search bar contrast */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950/80 to-transparent z-10 pointer-events-none" />
     </section>
   );
 };

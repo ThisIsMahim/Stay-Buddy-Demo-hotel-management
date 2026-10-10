@@ -1,7 +1,7 @@
 import React from "react";
 import { Shield, Plus, RefreshCw } from "lucide-react";
 
-type Tab = "stats" | "users" | "hotels" | "bookings" | "complaints" | "notifications" | "experiences";
+type Tab = "stats" | "users" | "hotels" | "bookings" | "complaints" | "notifications" | "experiences" | "spots";
 
 interface TabNavItem {
     id: Tab;

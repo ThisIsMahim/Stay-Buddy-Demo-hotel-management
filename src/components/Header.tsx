@@ -36,12 +36,22 @@ const Header = () => {
         <div className="hidden md:flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="relative w-12 h-12 md:w-14 md:h-14 bg-gradient-to-tr from-amber-50 to-white p-1 rounded-full shadow-sm group-hover:shadow-md transition-all group-hover:scale-105 duration-500">
-              <img src="/Logo.png" alt="RESERVATION BD" className="w-full h-full object-contain rounded-full" />
+            <div className="relative w-12 h-12 md:w-14 md:h-14 bg-gradient-to-tr from-emerald-500/10 via-amber-50 to-blue-500/10 p-1 rounded-2xl shadow-sm border border-slate-200/80 group-hover:shadow-md transition-all group-hover:scale-105 duration-300 flex items-center justify-center">
+              <img src="/Logo.png" alt="StayBD" className="w-full h-full object-contain rounded-xl" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full ring-2 ring-emerald-500/20" title="National Verified Platform" />
             </div>
             <div className="flex flex-col">
-              <span className="text-[17px] md:text-[20px] font-black text-slate-900 tracking-tighter leading-none">RESERVATION BD</span>
-              <span className="text-[8px] md:text-[10px] font-bold text-amber-600 tracking-[0.2em] uppercase mt-1 opacity-80">Your journey starts here</span>
+              <div className="flex items-center gap-2">
+                <span className="text-[19px] md:text-[22px] font-black text-slate-900 tracking-tight leading-none">
+                  STAY<span className="text-emerald-600">BD</span>
+                </span>
+                <span className="hidden lg:inline-flex items-center gap-1 text-[9px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/80 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  {t("National Platform")}
+                </span>
+              </div>
+              <span className="text-[9px] md:text-[10px] font-bold text-slate-500 tracking-wider uppercase mt-1">
+                {t("Stay Smart. Book Easy.")}
+              </span>
             </div>
           </Link>
 
@@ -51,19 +61,32 @@ const Header = () => {
               <button
                 key={item.key}
                 onClick={() => navigate(item.path)}
-                className={`px-4 py-2 text-[14px] font-medium rounded-full transition-all duration-200 ${activeTab === item.key
-                  ? "text-gray-900 bg-gray-100"
-                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                className={`px-3.5 py-2 text-[14px] font-medium rounded-full transition-all duration-200 ${activeTab === item.key
+                  ? "text-gray-900 bg-gray-100 shadow-sm"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
               >
                 {t(item.key)}
               </button>
             ))}
             <Link
-              to="/become-a-host"
-              className="px-4 py-2 text-[14px] font-medium text-amber-600 hover:text-amber-700 hover:bg-amber-50 rounded-full transition-all duration-200"
+              to="/tourism-map"
+              className="px-3.5 py-2 text-[14px] font-medium text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/70 rounded-full transition-all duration-200 flex items-center gap-1.5"
             >
-              Become a Partner
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              {t("Tourism Map")}
+            </Link>
+            <Link
+              to="/national-initiative"
+              className="px-3.5 py-2 text-[13px] font-semibold text-blue-700 bg-blue-50/80 hover:bg-blue-100/80 border border-blue-200/60 rounded-full transition-all duration-200 shadow-xs"
+            >
+              {t("Govt Initiative")}
+            </Link>
+            <Link
+              to="/become-a-host"
+              className="px-3.5 py-2 text-[13px] font-medium text-amber-700 hover:text-amber-800 hover:bg-amber-50 rounded-full transition-all duration-200"
+            >
+              {t("Partner Hotel")}
             </Link>
           </nav>
 
@@ -96,10 +119,15 @@ const Header = () => {
           {/* Top row: Logo + Menu */}
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 p-0.5 rounded-full bg-amber-50">
-                <img src="/Logo.png" alt="RESERVATION BD" className="w-full h-full object-contain rounded-full" />
+              <div className="w-9 h-9 p-1 rounded-xl bg-gradient-to-tr from-emerald-500/10 to-amber-50 border border-slate-200 flex items-center justify-center">
+                <img src="/Logo.png" alt="StayBD" className="w-full h-full object-contain rounded-lg" />
               </div>
-              <span className="text-[16px] font-black text-slate-900 tracking-tighter leading-none">RESERVATION BD</span>
+              <div className="flex flex-col">
+                <span className="text-[17px] font-black text-slate-900 tracking-tight leading-none">
+                  STAY<span className="text-emerald-600">BD</span>
+                </span>
+                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest">{t("National Platform")}</span>
+              </div>
             </Link>
             <div className="flex items-center gap-2">
               <LanguageSelector />

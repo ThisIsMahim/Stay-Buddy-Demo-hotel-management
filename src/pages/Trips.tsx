@@ -21,19 +21,36 @@ export default function Trips() {
        }).then(mu => {
          setMongoUser(mu);
        });
+    } else {
+       // Load local bookings if user is not logged in via clerk
+       try {
+         const localSb = JSON.parse(localStorage.getItem('sb_bookings') || '[]');
+         const localUb = JSON.parse(localStorage.getItem('userBookings') || '[]');
+         const combined = [...localSb, ...localUb.filter((u: any) => !localSb.some((s: any) => s.id === u.id))];
+         if (combined.length > 0) {
+           setBookings(combined);
+         }
+       } catch (e) {}
+       setLoading(false);
     }
   }, [user]);
 
   useEffect(() => {
     if (!mongoUser) return;
     api.getUserBookings(mongoUser.id).then(res => {
-      setBookings(res);
+      // Merge with local bookings
+      try {
+        const localSb = JSON.parse(localStorage.getItem('sb_bookings') || '[]');
+        const combined = [...(Array.isArray(res) ? res : []), ...localSb.filter((s: any) => !(Array.isArray(res) && res.some(r => r.id === s.id)))];
+        setBookings(combined);
+      } catch {
+        setBookings(res);
+      }
       setLoading(false);
     });
   }, [mongoUser]);
 
   if (!isLoaded) return <div className="flex justify-center min-h-screen items-center"><Loader2 className="w-8 h-8 animate-spin text-indigo-500" /></div>;
-  if (!isSignedIn) return <RedirectToSignIn />;
 
   const upcoming = bookings.filter(b => b.status === "CONFIRMED" && new Date(b.checkIn) >= new Date());
   const past = bookings.filter(b => b.status === "CONFIRMED" && new Date(b.checkIn) < new Date());

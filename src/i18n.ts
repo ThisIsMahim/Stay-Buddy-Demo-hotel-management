@@ -105,7 +105,17 @@ const resources = {
       "Owner Dashboard": "Owner Dashboard",
       "All Hotels": "All Hotels",
       "About us": "About us",
-      "Blog": "Blog"
+      "Blog": "Blog",
+      "Hotels": "Hotels",
+      "Tourism Map": "Tourism Map",
+      "Govt Initiative": "Govt Initiative",
+      "Partner Hotel": "Partner Hotel",
+      "National Platform": "National Platform",
+      "Stay Smart. Book Easy.": "Stay Smart. Book Easy.",
+      "National Hotel Discovery & Booking Platform": "National Hotel Discovery & Booking Platform",
+      "View Available Hotels": "View Available Hotels",
+      "Book Room": "Book Room",
+      "Dashboard": "Dashboard"
     }
   },
   bn: {
@@ -210,7 +220,17 @@ const resources = {
       "Owner Dashboard": "ওনার ড্যাশবোর্ড",
       "All Hotels": "সকল হোটেল",
       "About us": "আমাদের সম্পর্কে",
-      "Blog": "ব্লগ"
+      "Blog": "ব্লগ",
+      "Hotels": "হোটেল",
+      "Tourism Map": "ট্যুরিজম ম্যাপ",
+      "Govt Initiative": "সরকারি উদ্যোগ",
+      "Partner Hotel": "পার্টনার হোটেল",
+      "National Platform": "জাতীয় প্ল্যাটফর্ম",
+      "Stay Smart. Book Easy.": "স্মার্ট স্টে। সহজ বুকিং।",
+      "National Hotel Discovery & Booking Platform": "জাতীয় হোটেল অনুসন্ধান ও বুকিং প্ল্যাটফর্ম",
+      "View Available Hotels": "উপলব্ধ হোটেল দেখুন",
+      "Book Room": "রুম বুক করুন",
+      "Dashboard": "ড্যাশবোর্ড"
     }
   }
 };

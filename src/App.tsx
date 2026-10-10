@@ -25,6 +25,9 @@ import HotelSearch from "./pages/HotelSearch";
 import CheckoutPage from "./pages/CheckoutPage";
 import Services from "./pages/Services";
 import Trips from "./pages/Trips";
+import NationalProposal from "./pages/NationalProposal";
+import TourismMapPage from "./pages/TourismMapPage";
+import TouristSpotPage from "./pages/TouristSpotPage";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +40,12 @@ const App = () => (
         <SearchProvider>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/tourism-map" element={<TourismMapPage />} />
+            <Route path="/explore-bangladesh" element={<TourismMapPage />} />
+            <Route path="/spot/:spotId" element={<TouristSpotPage />} />
+            <Route path="/tourism-spot/:spotId" element={<TouristSpotPage />} />
+            <Route path="/national-initiative" element={<NationalProposal />} />
+            <Route path="/proposal" element={<NationalProposal />} />
             <Route path="/help" element={<HelpCenter />} />
             <Route path="/safety-help" element={<SafetyHelp />} />
             <Route path="/aircover" element={<AirCover />} />
@@ -53,6 +62,8 @@ const App = () => (
             <Route path="/owner" element={<OwnerDashboard />} />
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/hotels" element={<HotelSearch />} />
+            <Route path="/search" element={<HotelSearch />} />
+            <Route path="/hotel-search" element={<HotelSearch />} />
             <Route path="/services" element={<Services />} />
             <Route path="/wishlist" element={<Services />} /> {/* Using Services as a placeholder for now as it handles wishlist logic */}
             <Route path="/trips" element={<Trips />} />

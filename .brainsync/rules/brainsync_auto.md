@@ -1,7 +1,7 @@
 
 
 # Project Memory — Stay-Buddy-Demo-hotel-management
-> 40 notes | Score threshold: >40
+> 43 notes | Score threshold: >40
 
 ## Safety — Never Run Destructive Commands
 
@@ -18,26 +18,18 @@
 
 **Stack:** JavaScript/TypeScript · Express + React + Tailwind · DB: Firebase, MongoDB
 
-## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Important Warnings
+## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Active: `src/components`
 
-- **Low cohesion detected in Domain Cluster 1** — Cluster 1 (13 nodes) has a very low cohesion score (0.08). This sugges
-
-## Active: `.`
-
-- **problem-fix in .gitignore**
-- **🟢 Edited vercel.json (7 changes, 13min)**
-- **🟢 Edited vercel.json (5 changes, 5min)**
+- **Optimized Sparkles — fixes memory leak from uncleared timers**
 
 ## Project Standards
 
-- Use Suspense and Error Boundaries for async operations
-- Don't prop-drill more than 2 levels — use Context or state management
-- Use useMemo for expensive computations, useCallback for stable references
-- Enable strict mode in tsconfig.json
-- Prefer Array methods (map, filter, reduce) over manual loops
-- Use template literals for string interpolation, not concatenation
-- Use optional chaining (?.) and nullish coalescing (??) for safe access
-- Use const by default, let when reassignment needed, never var
+- convention in page.tsx
+- convention in SubscriptionBenefits.tsx
+
+## Recent Decisions
+
+- Optimized Sparkles — fixes memory leak from uncleared timers
 
 ## Verified Best Practices
 

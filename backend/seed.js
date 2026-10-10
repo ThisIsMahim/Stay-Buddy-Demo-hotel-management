@@ -118,25 +118,101 @@ async function seed() {
       checkInTime: '13:00 PM', checkOutTime: '11:00 AM',
       acceptedPayments: ['Cash'],
     },
+    /* Cox's Bazar Hotels */
+    {
+      owner: owner1._id, name: 'Sayeman Beach Resort',
+      description: 'Premier 5-star beachfront luxury resort overlooking the Bay of Bengal.', address: 'Marine Drive Road, Kolatoli', city: "Cox's Bazar",
+      locationLat: 21.4272, locationLng: 91.9702,
+      images: ['https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'],
+      rating: 4.9, totalReviews: 512, isVerified: true, isRedMarked: false, isActive: true,
+      amenities: ['WiFi', 'Pool', 'Ocean View', 'Restaurant', 'Spa', 'Gym'],
+      checkInTime: '14:00 PM', checkOutTime: '12:00 PM',
+      acceptedPayments: ['VISA', 'Mastercard', 'bKash', 'Nagad'],
+    },
+    {
+      owner: owner2._id, name: 'Ocean Paradise Hotel & Resort',
+      description: 'Spacious beachside comfort with infinity pool and direct beach access.', address: '28-29 Hotel Motel Zone, Kolatoli Road', city: "Cox's Bazar",
+      locationLat: 21.4300, locationLng: 91.9750,
+      images: ['https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800'],
+      rating: 4.7, totalReviews: 380, isVerified: true, isRedMarked: false, isActive: true,
+      amenities: ['WiFi', 'Pool', 'AC', 'Breakfast', 'Parking'],
+      checkInTime: '13:00 PM', checkOutTime: '11:30 AM',
+      acceptedPayments: ['VISA', 'bKash', 'Cash'],
+    },
+    /* Sylhet & Sreemangal Hotels */
+    {
+      owner: owner1._id, name: 'Grand Sultan Tea Resort & Golf',
+      description: 'World-class 5-star golf resort surrounded by lush rolling tea estates.', address: 'Radhanagar, Sreemangal', city: 'Sylhet',
+      locationLat: 24.3065, locationLng: 91.7296,
+      images: ['https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800'],
+      rating: 4.9, totalReviews: 420, isVerified: true, isRedMarked: false, isActive: true,
+      amenities: ['WiFi', 'Golf Course', 'Pool', 'Spa', 'Tea Garden'],
+      checkInTime: '14:00 PM', checkOutTime: '12:00 PM',
+      acceptedPayments: ['VISA', 'Mastercard', 'bKash'],
+    },
+    {
+      owner: owner2._id, name: 'Rose View Hotel Sylhet',
+      description: 'Luxury business and leisure hotel in the heart of Sylhet city.', address: 'Shahjalal Uposhahar', city: 'Sylhet',
+      locationLat: 24.8864, locationLng: 91.8790,
+      images: ['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'],
+      rating: 4.6, totalReviews: 290, isVerified: true, isRedMarked: false, isActive: true,
+      amenities: ['WiFi', 'Pool', 'Restaurant', 'Gym'],
+      checkInTime: '14:00 PM', checkOutTime: '12:00 PM',
+      acceptedPayments: ['VISA', 'bKash', 'Nagad'],
+    },
+    /* Sajek & Bandarban Hotels */
+    {
+      owner: owner1._id, name: 'Sajek Cloud Eco Resort',
+      description: 'Breathtaking wooden cottages located high above the clouds on Sajek peak.', address: 'Ruilui Para, Sajek Valley', city: 'Chittagong',
+      locationLat: 23.3820, locationLng: 92.2938,
+      images: ['https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800'],
+      rating: 4.8, totalReviews: 310, isVerified: true, isRedMarked: false, isActive: true,
+      amenities: ['Cloud View', 'Balcony', 'Restaurant', 'Solar Power'],
+      checkInTime: '12:00 PM', checkOutTime: '10:30 AM',
+      acceptedPayments: ['bKash', 'Nagad', 'Cash'],
+    },
+    {
+      owner: owner2._id, name: 'Sarah Luxury Resort & Pool Villas',
+      description: 'Exclusive private pool villas and water sports wonderland.', address: 'Rajabari, Sreepur', city: 'Dhaka',
+      locationLat: 24.1850, locationLng: 90.4720,
+      images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800'],
+      rating: 4.9, totalReviews: 470, isVerified: true, isRedMarked: false, isActive: true,
+      amenities: ['Private Pool', 'WiFi', 'Boating', 'Spa', 'Restaurant'],
+      checkInTime: '14:00 PM', checkOutTime: '12:00 PM',
+      acceptedPayments: ['VISA', 'Mastercard', 'bKash'],
+    },
   ]);
-  const [hotel1, hotel2, hotel3, hotel4, hotel5, hotel6, hotel7] = hotels;
+  const [hotel1, hotel2, hotel3, hotel4, hotel5, hotel6, hotel7, hotel8, hotel9, hotel10, hotel11, hotel12, hotel13] = hotels;
   console.log(`  ✓ ${hotels.length} hotels`);
 
   // ── Rooms ──
   const rooms = await Room.insertMany([
-    { hotel: hotel1._id, type: 'Single Bed', pricePerNight: 900, totalInventory: 5, availableCount: 4, images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'], amenities: ['AC','TV','WiFi'], floorNumber: 2, roomNumber: '201', capacity: '1 Adult', maxAdults: 1, maxChildren: 0, sizeSqFt: 250, viewType: 'City View' },
+    { hotel: hotel1._id, type: 'Single Bed', pricePerNight: 900, totalInventory: 5, availableCount: 4, images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'], amenities: ['AC','TV','WiFi'], floorNumber: 2, roomNumber: '201', capacity: '1 Adult', maxAdults: 2, maxChildren: 1, sizeSqFt: 250, viewType: 'City View' },
     { hotel: hotel1._id, type: 'Double Bed', pricePerNight: 1500, totalInventory: 8, availableCount: 3, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['AC','TV','WiFi'], floorNumber: 3, roomNumber: '305', capacity: '2 Adults', maxAdults: 2, maxChildren: 1, sizeSqFt: 350, viewType: 'Pool View' },
-    { hotel: hotel2._id, type: 'Single Bed', pricePerNight: 600, totalInventory: 10, availableCount: 7, images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'], amenities: ['WiFi','TV'], floorNumber: 1, roomNumber: '101', capacity: '1 Adult', maxAdults: 1, maxChildren: 0, sizeSqFt: 200, viewType: 'Street View' },
-    { hotel: hotel2._id, type: 'Double Bed', pricePerNight: 1000, totalInventory: 5, availableCount: 2, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['WiFi','TV','AC'], floorNumber: 2, roomNumber: '201', capacity: '2 Adults, 1 Child', maxAdults: 2, maxChildren: 1, sizeSqFt: 300, viewType: 'City View' },
+    { hotel: hotel2._id, type: 'Single Bed', pricePerNight: 600, totalInventory: 10, availableCount: 7, images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'], amenities: ['WiFi','TV'], floorNumber: 1, roomNumber: '101', capacity: '1 Adult', maxAdults: 2, maxChildren: 1, sizeSqFt: 200, viewType: 'Street View' },
+    { hotel: hotel2._id, type: 'Double Bed', pricePerNight: 1000, totalInventory: 5, availableCount: 2, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['WiFi','TV','AC'], floorNumber: 2, roomNumber: '201', capacity: '2 Adults, 1 Child', maxAdults: 3, maxChildren: 2, sizeSqFt: 300, viewType: 'City View' },
     { hotel: hotel3._id, type: 'Deluxe', pricePerNight: 2200, totalInventory: 3, availableCount: 1, images: ['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600'], amenities: ['AC','TV','WiFi'], floorNumber: 5, roomNumber: '505', capacity: '2 Adults, 2 Children', maxAdults: 3, maxChildren: 2, sizeSqFt: 450, viewType: 'Lake View' },
     
     /* Rajshahi Rooms */
-    { hotel: hotel4._id, type: 'Single Bed', pricePerNight: 800, totalInventory: 4, availableCount: 3, images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'], amenities: ['AC','WiFi'], floorNumber: 1, roomNumber: '102', capacity: '1 Adult', maxAdults: 1, maxChildren: 0, sizeSqFt: 220, viewType: 'Garden View' },
-    { hotel: hotel5._id, type: 'Double Bed', pricePerNight: 1200, totalInventory: 6, availableCount: 5, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['WiFi'], floorNumber: 2, roomNumber: '202', capacity: '2 Adults', maxAdults: 2, maxChildren: 0, sizeSqFt: 280, viewType: 'Street View' },
+    { hotel: hotel4._id, type: 'Single Bed', pricePerNight: 800, totalInventory: 4, availableCount: 3, images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'], amenities: ['AC','WiFi'], floorNumber: 1, roomNumber: '102', capacity: '1 Adult', maxAdults: 2, maxChildren: 0, sizeSqFt: 220, viewType: 'Garden View' },
+    { hotel: hotel5._id, type: 'Double Bed', pricePerNight: 1200, totalInventory: 6, availableCount: 5, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['WiFi'], floorNumber: 2, roomNumber: '202', capacity: '2 Adults', maxAdults: 2, maxChildren: 1, sizeSqFt: 280, viewType: 'Street View' },
 
     /* Panchagarh Rooms */
-    { hotel: hotel6._id, type: 'Eco Suite', pricePerNight: 2500, totalInventory: 3, availableCount: 2, images: ['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600'], amenities: ['Tea Maker','WiFi'], floorNumber: 1, roomNumber: '101', capacity: '2 Adults, 2 Children', maxAdults: 2, maxChildren: 2, sizeSqFt: 400, viewType: 'Tea Garden View' },
+    { hotel: hotel6._id, type: 'Eco Suite', pricePerNight: 2500, totalInventory: 3, availableCount: 2, images: ['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600'], amenities: ['Tea Maker','WiFi'], floorNumber: 1, roomNumber: '101', capacity: '2 Adults, 2 Children', maxAdults: 3, maxChildren: 2, sizeSqFt: 400, viewType: 'Tea Garden View' },
     { hotel: hotel7._id, type: 'Standard Double', pricePerNight: 1100, totalInventory: 5, availableCount: 5, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['WiFi'], floorNumber: 1, roomNumber: '101', capacity: '2 Adults', maxAdults: 2, maxChildren: 1, sizeSqFt: 250, viewType: 'Street View' },
+
+    /* Cox's Bazar Rooms */
+    { hotel: hotel8._id, type: 'Ocean View Super Deluxe', pricePerNight: 4500, totalInventory: 6, availableCount: 5, images: ['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600'], amenities: ['Ocean View','AC','WiFi','Balcony'], floorNumber: 4, roomNumber: '401', capacity: '2 Adults, 2 Children', maxAdults: 4, maxChildren: 2, sizeSqFt: 500, viewType: 'Sea View' },
+    { hotel: hotel8._id, type: 'Executive Suite', pricePerNight: 8500, totalInventory: 3, availableCount: 2, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['Jacuzzi','Ocean View','AC','Breakfast'], floorNumber: 6, roomNumber: '601', capacity: '2 Adults, 2 Children', maxAdults: 4, maxChildren: 2, sizeSqFt: 750, viewType: 'Panoramic Sea View' },
+    { hotel: hotel9._id, type: 'Deluxe Sea Facing', pricePerNight: 3500, totalInventory: 8, availableCount: 6, images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'], amenities: ['AC','WiFi','Balcony'], floorNumber: 3, roomNumber: '302', capacity: '2 Adults', maxAdults: 3, maxChildren: 1, sizeSqFt: 400, viewType: 'Partial Sea View' },
+
+    /* Sylhet & Sreemangal Rooms */
+    { hotel: hotel10._id, type: 'Tea Garden Suite', pricePerNight: 5500, totalInventory: 5, availableCount: 4, images: ['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600'], amenities: ['Tea View','AC','WiFi','Breakfast'], floorNumber: 2, roomNumber: '205', capacity: '2 Adults, 1 Child', maxAdults: 3, maxChildren: 2, sizeSqFt: 550, viewType: 'Tea Garden View' },
+    { hotel: hotel11._id, type: 'Premium Executive', pricePerNight: 3200, totalInventory: 7, availableCount: 5, images: ['https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600'], amenities: ['AC','WiFi','Gym Access'], floorNumber: 5, roomNumber: '502', capacity: '2 Adults', maxAdults: 3, maxChildren: 1, sizeSqFt: 380, viewType: 'City View' },
+
+    /* Sajek & Villa Rooms */
+    { hotel: hotel12._id, type: 'Cloud Valley Wooden Cottage', pricePerNight: 3200, totalInventory: 4, availableCount: 3, images: ['https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600'], amenities: ['Cloud Balcony','Solar Power','Private Deck'], floorNumber: 1, roomNumber: 'C-01', capacity: '2 Adults, 2 Children', maxAdults: 4, maxChildren: 2, sizeSqFt: 360, viewType: 'Cloud & Valley View' },
+    { hotel: hotel13._id, type: 'Private Pool Villa Suite', pricePerNight: 9500, totalInventory: 3, availableCount: 2, images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600'], amenities: ['Private Pool','BBQ Setup','Kitchenette','WiFi'], floorNumber: 1, roomNumber: 'V-01', capacity: '4 Adults, 2 Children', maxAdults: 6, maxChildren: 4, sizeSqFt: 1200, viewType: 'Private Garden & Pool' },
   ]);
   const [room1, room2, room3, room4, room5, room6, room7, room8, room9] = rooms;
   console.log(`  ✓ ${rooms.length} rooms`);

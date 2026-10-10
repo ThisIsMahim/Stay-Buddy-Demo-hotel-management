@@ -188,23 +188,43 @@ export default function HotelSearch() {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
 
   // ── Filter State synchronized with URL (now merging with global search) ──
-  const filters: FilterState = useMemo(() => ({
-    searchQuery: searchParams.get("q") || globalSearch.q || "",
-    checkIn: searchParams.get("checkIn") || globalSearch.checkIn || "",
-    checkOut: searchParams.get("checkOut") || globalSearch.checkOut || "",
-    adults: parseInt(searchParams.get("adults") || globalSearch.adults.toString()),
-    children: parseInt(searchParams.get("children") || globalSearch.children.toString()),
-    roomsCount: parseInt(searchParams.get("rooms") || globalSearch.rooms.toString()),
-    priceRange: (searchParams.get("price")?.split(",").map(Number) as [number, number]) || [100, 100000],
-    stars: searchParams.get("stars")?.split(",").map(Number).filter(n => !isNaN(n)) || [],
-    roomTypes: searchParams.get("types")?.split(",").filter(Boolean) || [],
-    amenities: searchParams.get("amenities")?.split(",").filter(Boolean) || [],
-    category: searchParams.get("category") || undefined,
-    sortBy: (searchParams.get("sort") as any) || "rating",
-    hasOffers: searchParams.get("offers") === "true",
-    payAtHotel: searchParams.get("payAtHotel") === "true",
-    petsAllowed: searchParams.get("pets") === "true" || globalSearch.petsAllowed,
-  }), [searchParams, globalSearch]);
+  const filters: FilterState = useMemo(() => {
+    const qParam = searchParams.get("q") || searchParams.get("destination") || globalSearch.q || "";
+    const priceParam = searchParams.get("price");
+    const minPriceParam = searchParams.get("minPrice");
+    const maxPriceParam = searchParams.get("maxPrice");
+
+    let priceRange: [number, number] = [100, 100000];
+    if (priceParam) {
+      const parts = priceParam.split(",").map(Number);
+      if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+        priceRange = [parts[0], parts[1]];
+      }
+    } else if (minPriceParam || maxPriceParam) {
+      priceRange = [
+        minPriceParam ? Math.max(100, Number(minPriceParam)) : 100,
+        maxPriceParam ? Number(maxPriceParam) : 100000,
+      ];
+    }
+
+    return {
+      searchQuery: qParam,
+      checkIn: searchParams.get("checkIn") || globalSearch.checkIn || "",
+      checkOut: searchParams.get("checkOut") || globalSearch.checkOut || "",
+      adults: parseInt(searchParams.get("adults") || globalSearch.adults.toString()),
+      children: parseInt(searchParams.get("children") || globalSearch.children.toString()),
+      roomsCount: parseInt(searchParams.get("rooms") || globalSearch.rooms.toString()),
+      priceRange,
+      stars: searchParams.get("stars")?.split(",").map(Number).filter(n => !isNaN(n)) || [],
+      roomTypes: searchParams.get("types")?.split(",").filter(Boolean) || [],
+      amenities: searchParams.get("amenities")?.split(",").filter(Boolean) || [],
+      category: searchParams.get("category") || undefined,
+      sortBy: (searchParams.get("sort") as any) || "rating",
+      hasOffers: searchParams.get("offers") === "true",
+      payAtHotel: searchParams.get("payAtHotel") === "true",
+      petsAllowed: searchParams.get("pets") === "true" || globalSearch.petsAllowed,
+    };
+  }, [searchParams, globalSearch]);
 
   const updateFilters = (patch: Partial<FilterState>) => {
     const next = { ...filters, ...patch };
@@ -284,18 +304,57 @@ export default function HotelSearch() {
     localStorage.setItem("sb_wishlist", JSON.stringify(next));
   };
 
+const DESTINATION_CITY_MAP: Record<string, string[]> = {
+  "cox's bazar": ["cox's bazar", "chittagong"],
+  "coxs bazar": ["cox's bazar", "chittagong"],
+  "cox": ["cox's bazar"],
+  "sylhet": ["sylhet", "moulvibazar", "habiganj"],
+  "sreemangal": ["sylhet", "moulvibazar"],
+  "ratargul": ["sylhet"],
+  "tanguar": ["sylhet", "sunamganj"],
+  "sajek": ["chittagong", "rangamati", "khagrachhari", "cox's bazar"],
+  "bandarban": ["chittagong", "bandarban", "cox's bazar"],
+  "nilgiri": ["chittagong", "bandarban", "cox's bazar"],
+  "saint martin": ["cox's bazar", "chittagong"],
+  "kuakata": ["barisal", "patuakhali", "khulna"],
+  "sundarbans": ["khulna", "bagerhat"],
+  "dhaka": ["dhaka", "gazipur", "narayanganj"],
+  "gazipur": ["dhaka", "gazipur"],
+  "paharpur": ["rajshahi", "naogaon", "bogra", "dhaka"],
+  "somapura": ["rajshahi", "naogaon", "bogra", "dhaka"],
+  "bagerhat": ["khulna", "bagerhat"],
+};
+
   // ── Filter Logic ──
   const filtered = useMemo(() => {
     let result = hotels.filter(h => {
       if (!h.isActive || (!h.isVerified && !h.isRedMarked)) return false;
 
       if (filters.searchQuery) {
-        const q = filters.searchQuery.toLowerCase();
-        const match = h.name.toLowerCase().includes(q) || h.city.toLowerCase().includes(q) || h.address.toLowerCase().includes(q);
+        const q = filters.searchQuery.toLowerCase().trim().replace(/['’]/g, '');
+        const words = q.split(/\s+/).filter(w => w.length > 1);
+        const textToSearch = `${h.name} ${h.city} ${h.address} ${h.description || ""}`.toLowerCase().replace(/['’]/g, '');
+        
+        let match = textToSearch.includes(q) || (words.length > 0 && words.some(w => textToSearch.includes(w)));
+        
+        // Smart tourist spot alias fallback
+        if (!match) {
+          for (const [spotKeyword, allowedCities] of Object.entries(DESTINATION_CITY_MAP)) {
+            const cleanSpot = spotKeyword.replace(/['’]/g, '');
+            if (q.includes(cleanSpot) || cleanSpot.includes(q)) {
+              if (allowedCities.some(city => textToSearch.includes(city.replace(/['’]/g, '')))) {
+                match = true;
+                break;
+              }
+            }
+          }
+        }
+
         if (!match) return false;
       }
 
-      const cheapestRoomRate = Math.min(...h.rooms.map(r => r.discountPrice || r.pricePerNight));
+      const roomRates = (h.rooms || []).map(r => r.discountPrice || r.pricePerNight).filter(Boolean);
+      const cheapestRoomRate = roomRates.length > 0 ? Math.min(...roomRates) : 1200;
       if (cheapestRoomRate < filters.priceRange[0] || (filters.priceRange[1] < 100000 && cheapestRoomRate > filters.priceRange[1])) return false;
 
       if (filters.stars.length > 0) {

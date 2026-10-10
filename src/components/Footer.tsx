@@ -31,10 +31,11 @@ const footerSections = [
     ],
   },
   {
-    title: "RESERVATION BD",
+    title: "StayBD Platform",
     links: [
-      { text: "About us", href: "#" },
-      { text: "Blog", href: "#" },
+      { text: "National Initiative", href: "/national-initiative" },
+      { text: "Tourism Map", href: "/tourism-map" },
+      { text: "About Us", href: "/help" },
     ],
   },
 ];
@@ -53,15 +54,23 @@ const Footer = () => {
         >
           {/* Brand Column */}
           <div>
-            <Link to="/" className="flex items-center gap-3 mb-6 group">
-              <div className="w-12 h-12 p-1 rounded-full bg-amber-50">
-                <img src="/Logo.png" alt="RESERVATION BD" className="w-full h-full object-contain rounded-full shadow-sm" />
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
+              <div className="w-11 h-11 p-1 rounded-2xl bg-gradient-to-tr from-emerald-500/10 via-amber-50 to-blue-500/10 border border-slate-200 flex items-center justify-center">
+                <img src="/Logo.png" alt="StayBD" className="w-full h-full object-contain rounded-xl shadow-xs" />
               </div>
-              <span className="text-xl font-black text-slate-900 tracking-tighter">RESERVATION BD</span>
+              <div className="flex flex-col">
+                <span className="text-xl font-black text-slate-900 tracking-tight leading-none">
+                  STAY<span className="text-emerald-600">BD</span>
+                </span>
+                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">Stay Smart. Book Easy.</span>
+              </div>
             </Link>
-            <p className="text-sm text-gray-500 leading-relaxed mb-5">
-              {t("Your trusted companion for finding the perfect stay across Bangladesh.")}
+            <p className="text-xs text-gray-500 leading-relaxed mb-4">
+              National Hotel Discovery & Booking Platform. Connecting citizens, verified hotels, and tourism hubs nationwide.
             </p>
+            <div className="text-[11px] font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl mb-5">
+              Aligned with Civil Aviation & Tourism + BPC
+            </div>
             <div className="flex items-center gap-3">
               <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
                 <Facebook className="w-4 h-4 text-gray-600" />
@@ -99,7 +108,7 @@ const Footer = () => {
         <div className="border-t border-gray-100 pt-8 mt-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 text-center md:text-left">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-[13px] text-gray-400 font-medium">
-              <span>© 2026 RESERVATION BD, Inc.</span>
+              <span>© 2026 StayBD National Platform. All rights reserved.</span>
               <div className="flex items-center gap-3">
                 <a href="#" className="hover:text-gray-900 transition-colors">Privacy</a>
                 <span>·</span>
